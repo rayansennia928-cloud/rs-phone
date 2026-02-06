@@ -69,7 +69,7 @@ const App: React.FC = () => {
               <h1 className="text-4xl font-bold text-gray-900 mb-4">La technologie de demain, aujourd'hui</h1>
               <p className="text-xl text-gray-500 max-w-2xl mx-auto">
                 Découvrez la sélection premium <strong>RS Phone</strong> de smartphones et accessoires. 
-                Qualité garantie et livraison express en France métropolitaine.
+                Qualité garantie et livraison express en Algérie métropolitaine.
               </p>
             </div>
             
