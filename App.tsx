@@ -69,10 +69,10 @@ const App: React.FC = () => {
       // REMPLACEZ CES VALEURS PAR LES VOTRES OBTENUES SUR EMAILJS.COM
       // Service ID, Template ID, Public Key
       await emailjs.send(
-        'YOUR_SERVICE_ID', 
-        'YOUR_TEMPLATE_ID', 
+        'service_gmail', 
+        'template_mijyktl', 
         templateParams, 
-        'YOUR_PUBLIC_KEY'
+        'l-wIKsMXS0-qyw3tA'
       );
 
       // 4. Succès : Mise à jour de l'état local
