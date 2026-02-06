@@ -25,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, currentVi
             aria-label="Retour à l'accueil RS Phone"
           >
             <img 
-              src="/rs-logo.png" 
+              src="/rs-logo.png.jpg" 
               alt="RS Phone" 
               className="h-12 w-auto object-contain"
             />
