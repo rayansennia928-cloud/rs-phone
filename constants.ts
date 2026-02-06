@@ -29,19 +29,6 @@ export const MOCK_PRODUCTS: Product[] = [
     },
   },
   {
-    id: 'p3',
-    name: 'Pixel Vision 8',
-    category: 'smartphone',
-    price: 750,
-    description: 'La meilleure expérience photo sur mobile avec une IA intégrée révolutionnaire.',
-    image: 'https://picsum.photos/400/500?random=3',
-    specs: {
-      screen: '6.1" OLED',
-      battery: '4200 mAh',
-      camera: '50MP Night Sight',
-      processor: 'Tensor G4',
-    },
-  },
   {
     id: 'a1',
     name: 'Écouteurs Sonic Buds Pro',
@@ -65,15 +52,3 @@ export const MOCK_PRODUCTS: Product[] = [
       compatibility: 'USB-C PD',
     },
   },
-  {
-    id: 'a3',
-    name: 'Coque de Protection Renforcée',
-    category: 'accessory',
-    price: 35,
-    description: 'Protection militaire contre les chutes jusqu\'à 3 mètres.',
-    image: 'https://picsum.photos/400/500?random=6',
-    specs: {
-      compatibility: 'Universel (s\'adapte)',
-    },
-  },
-];
