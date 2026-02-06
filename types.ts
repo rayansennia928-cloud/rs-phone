@@ -24,6 +24,12 @@ export enum OrderStatus {
   DELIVERED = 'Livrée',
 }
 
+export interface CustomerInfo {
+  name: string;
+  email: string;
+  address: string;
+}
+
 export interface Order {
   id: string;
   date: string;
@@ -32,6 +38,7 @@ export interface Order {
   status: OrderStatus;
   customerName: string;
   address: string;
+  email?: string;
 }
 
 export type ViewState = 'home' | 'tracking' | 'checkout-success';
