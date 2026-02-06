@@ -280,7 +280,7 @@ const App: React.FC = () => {
       
       <footer className="bg-white border-t border-gray-200 py-12 mt-12" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-          <p>&copy; 2024 RS Phone. Tous droits réservés.</p>
+          <p>&copy; 2026 RS Phone. Tous droits réservés.</p>
           <p className="mt-2">Ce site est une démonstration technique.</p>
         </div>
       </footer>
