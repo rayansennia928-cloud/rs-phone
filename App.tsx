@@ -5,8 +5,9 @@ import { CartDrawer } from './components/CartDrawer';
 import { OrderTracker } from './components/OrderTracker';
 import { ChatAssistant } from './components/ChatAssistant';
 import { MOCK_PRODUCTS } from './constants';
-import { Product, CartItem, ViewState, Order, OrderStatus } from './types';
+import { Product, CartItem, ViewState, Order, OrderStatus, CustomerInfo } from './types';
 import { CheckCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
@@ -14,6 +15,7 @@ const App: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [orders, setOrders] = useState<Order[]>([]);
   const [lastOrderId, setLastOrderId] = useState<string | null>(null);
+  const [isProcessingOrder, setIsProcessingOrder] = useState(false);
 
   const addToCart = (product: Product) => {
     setCartItems(prev => {
@@ -41,23 +43,62 @@ const App: React.FC = () => {
     setCartItems(prev => prev.filter(item => item.id !== id));
   };
 
-  const handleCheckout = () => {
-    // Simulate checkout process
-    const newOrder: Order = {
-      id: `CMD-${Math.floor(Math.random() * 1000000)}`,
-      date: new Date().toLocaleDateString('fr-FR'),
-      items: [...cartItems],
-      total: cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0),
-      status: OrderStatus.PENDING,
-      customerName: "Client Invité",
-      address: "123 Rue de la Tech, Paris"
+  const handleCheckout = async (customerInfo: CustomerInfo) => {
+    setIsProcessingOrder(true);
+    
+    // 1. Création de l'objet commande (local)
+    const orderId = `CMD-${Math.floor(Math.random() * 1000000)}`;
+    const totalAmount = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    
+    // 2. Préparation du contenu de l'email
+    const itemsListString = cartItems
+      .map(item => `- ${item.quantity}x ${item.name} (${item.price * item.quantity}€)`)
+      .join('\n');
+
+    const templateParams = {
+      customer_name: customerInfo.name,
+      customer_email: customerInfo.email,
+      customer_address: customerInfo.address,
+      order_details: itemsListString,
+      total_price: totalAmount + ' €',
+      order_id: orderId
     };
 
-    setOrders(prev => [...prev, newOrder]);
-    setLastOrderId(newOrder.id);
-    setCartItems([]);
-    setIsCartOpen(false);
-    setCurrentView('checkout-success');
+    try {
+      // 3. Envoi via EmailJS
+      // REMPLACEZ CES VALEURS PAR LES VOTRES OBTENUES SUR EMAILJS.COM
+      // Service ID, Template ID, Public Key
+      await emailjs.send(
+        'YOUR_SERVICE_ID', 
+        'YOUR_TEMPLATE_ID', 
+        templateParams, 
+        'YOUR_PUBLIC_KEY'
+      );
+
+      // 4. Succès : Mise à jour de l'état local
+      const newOrder: Order = {
+        id: orderId,
+        date: new Date().toLocaleDateString('fr-FR'),
+        items: [...cartItems],
+        total: totalAmount,
+        status: OrderStatus.PENDING,
+        customerName: customerInfo.name,
+        address: customerInfo.address,
+        email: customerInfo.email
+      };
+
+      setOrders(prev => [...prev, newOrder]);
+      setLastOrderId(newOrder.id);
+      setCartItems([]);
+      setIsCartOpen(false);
+      setCurrentView('checkout-success');
+
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de la commande:', error);
+      alert("Une erreur est survenue lors de l'envoi de la commande. Veuillez vérifier votre configuration EmailJS.");
+    } finally {
+      setIsProcessingOrder(false);
+    }
   };
 
   const renderContent = () => {
@@ -69,7 +110,7 @@ const App: React.FC = () => {
               <h1 className="text-4xl font-bold text-gray-900 mb-4">La technologie de demain, aujourd'hui</h1>
               <p className="text-xl text-gray-500 max-w-2xl mx-auto">
                 Découvrez la sélection premium <strong>RS Phone</strong> de smartphones et accessoires. 
-                Qualité garantie et livraison express en Algérie métropolitaine.
+                Qualité garantie et livraison express en France métropolitaine.
               </p>
             </div>
             
@@ -141,13 +182,14 @@ const App: React.FC = () => {
         onUpdateQuantity={updateQuantity}
         onRemoveItem={removeItem}
         onCheckout={handleCheckout}
+        isProcessing={isProcessingOrder}
       />
 
       <ChatAssistant />
       
       <footer className="bg-white border-t border-gray-200 py-12 mt-12" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-          <p>&copy; 2026 RS Phone. Tous droits réservés.</p>
+          <p>&copy; 2024 RS Phone. Tous droits réservés.</p>
           <p className="mt-2">Ce site est une démonstration technique.</p>
         </div>
       </footer>
