@@ -26,7 +26,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     name: '',
     phone: '',
     email: '',
-    address: ''
+    address: '',
+    note: ''
   });
 
   const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -197,6 +198,18 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       placeholder="12 rue de la Paix, 75000 Paris"
                       value={formData.address}
                       onChange={e => setFormData({...formData, address: e.target.value})}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="note" className="block text-sm font-medium text-gray-700">Message / Note (Optionnel)</label>
+                    <textarea
+                      id="note"
+                      rows={2}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-4 py-2 border"
+                      placeholder="Instructions de livraison, préférences, etc."
+                      value={formData.note || ''}
+                      onChange={e => setFormData({...formData, note: e.target.value})}
                     />
                   </div>
                   
