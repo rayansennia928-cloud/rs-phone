@@ -112,13 +112,13 @@ export const OrderTracker: React.FC<OrderTrackerProps> = ({ orders }) => {
               {foundOrder.items.map(item => (
                 <li key={item.id} className="flex justify-between text-sm">
                   <span className="text-gray-600">{item.quantity}x {item.name}</span>
-                  <span className="font-medium">{item.price * item.quantity} €</span>
+                  <span className="font-medium">{item.price * item.quantity} DA</span>
                 </li>
               ))}
             </ul>
             <div className="border-t border-gray-100 mt-4 pt-4 flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>{foundOrder.total} €</span>
+              <span>{foundOrder.total} DA</span>
             </div>
           </div>
         </div>
