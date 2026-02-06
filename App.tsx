@@ -57,7 +57,7 @@ const App: React.FC = () => {
 
     const templateParams = {
       customer_name: customerInfo.name,
-      customer_email: customerInfo.email,
+      customer_phone: customerInfo.phone,
       customer_address: customerInfo.address,
       order_details: itemsListString,
       total_price: totalAmount + ' DA',
@@ -84,7 +84,7 @@ const App: React.FC = () => {
         status: OrderStatus.PENDING,
         customerName: customerInfo.name,
         address: customerInfo.address,
-        email: customerInfo.email
+        phone: customerInfo.phone
       };
 
       setOrders(prev => [...prev, newOrder]);
