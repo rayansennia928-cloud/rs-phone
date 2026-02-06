@@ -121,6 +121,13 @@ export const OrderTracker: React.FC<OrderTrackerProps> = ({ orders }) => {
               <span>{foundOrder.total} DA</span>
             </div>
           </div>
+
+          {foundOrder.note && (
+            <div className="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+              <p className="text-xs text-yellow-800 font-semibold mb-1">Votre note :</p>
+              <p className="text-sm text-yellow-900 italic">"{foundOrder.note}"</p>
+            </div>
+          )}
         </div>
       )}
     </div>
