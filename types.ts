@@ -28,6 +28,7 @@ export enum OrderStatus {
 export interface CustomerInfo {
   name: string;
   phone: string;
+  email: string;
   address: string;
 }
 
@@ -40,6 +41,7 @@ export interface Order {
   customerName: string;
   address: string;
   phone: string;
+  email: string;
 }
 
 export type ViewState = 'home' | 'accessories' | 'tracking' | 'checkout-success' | 'about';
