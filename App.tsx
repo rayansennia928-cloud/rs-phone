@@ -52,7 +52,7 @@ const App: React.FC = () => {
     
     // 2. Préparation du contenu de l'email
     const itemsListString = cartItems
-      .map(item => `- ${item.quantity}x ${item.name} (${item.price * item.quantity}€)`)
+      .map(item => `- ${item.quantity}x ${item.name} (${item.price * item.quantity} DA)`)
       .join('\n');
 
     const templateParams = {
@@ -60,7 +60,7 @@ const App: React.FC = () => {
       customer_email: customerInfo.email,
       customer_address: customerInfo.address,
       order_details: itemsListString,
-      total_price: totalAmount + ' €',
+      total_price: totalAmount + ' DA',
       order_id: orderId
     };
 
