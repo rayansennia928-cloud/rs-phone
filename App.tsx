@@ -6,7 +6,7 @@ import { OrderTracker } from './components/OrderTracker';
 import { ChatAssistant } from './components/ChatAssistant';
 import { MOCK_PRODUCTS } from './constants';
 import { Product, CartItem, ViewState, Order, OrderStatus, CustomerInfo } from './types';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Headphones } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const App: React.FC = () => {
@@ -69,10 +69,10 @@ const App: React.FC = () => {
       // REMPLACEZ CES VALEURS PAR LES VOTRES OBTENUES SUR EMAILJS.COM
       // Service ID, Template ID, Public Key
       await emailjs.send(
-        'service_gmail', 
-        'template_mijyktl', 
+        'YOUR_SERVICE_ID', 
+        'YOUR_TEMPLATE_ID', 
         templateParams, 
-        'l-wIKsMXS0-qyw3tA'
+        'YOUR_PUBLIC_KEY'
       );
 
       // 4. Succès : Mise à jour de l'état local
@@ -123,6 +123,38 @@ const App: React.FC = () => {
                 />
               ))}
             </div>
+          </div>
+        );
+
+      case 'accessories':
+        const accessories = MOCK_PRODUCTS.filter(p => p.category === 'accessory');
+        return (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-fade-in">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 bg-blue-100 rounded-lg">
+                <Headphones className="h-8 w-8 text-blue-600" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">Accessoires</h1>
+                <p className="text-gray-500">Équipez votre smartphone avec notre sélection.</p>
+              </div>
+            </div>
+            
+            {accessories.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {accessories.map(product => (
+                  <ProductCard 
+                    key={product.id} 
+                    product={product} 
+                    onAddToCart={addToCart} 
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-20 bg-gray-100 rounded-xl">
+                <p className="text-gray-500">Aucun accessoire disponible pour le moment.</p>
+              </div>
+            )}
           </div>
         );
       
