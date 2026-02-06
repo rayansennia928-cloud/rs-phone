@@ -29,7 +29,6 @@ export const MOCK_PRODUCTS: Product[] = [
       compatibility: 'Bluetooth 5.3',
     },
   },
-];
   {
     id: 'iphone-16-pro',
     name: 'iPhone 16 Pro',
@@ -45,3 +44,4 @@ export const MOCK_PRODUCTS: Product[] = [
       processor: 'A17 Pro',
     },
   },
+];
