@@ -6,7 +6,7 @@ import { OrderTracker } from './components/OrderTracker';
 import { ChatAssistant } from './components/ChatAssistant';
 import { MOCK_PRODUCTS } from './constants';
 import { Product, CartItem, ViewState, Order, OrderStatus, CustomerInfo } from './types';
-import { CheckCircle, Headphones } from 'lucide-react';
+import { CheckCircle, Headphones, Smartphone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const App: React.FC = () => {
@@ -104,18 +104,21 @@ const App: React.FC = () => {
   const renderContent = () => {
     switch (currentView) {
       case 'home':
+        const smartphones = MOCK_PRODUCTS.filter(p => p.category === 'smartphone');
         return (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-fade-in">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">La technologie de demain, aujourd'hui</h1>
-              <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-                Découvrez la sélection premium <strong>RS Phone</strong> de smartphones et accessoires. 
-                Qualité garantie et livraison express en France métropolitaine.
-              </p>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 bg-blue-100 rounded-lg">
+                <Smartphone className="h-8 w-8 text-blue-600" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">Nos Smartphones</h1>
+                <p className="text-gray-500">Performance et élégance. Découvrez notre sélection premium.</p>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {MOCK_PRODUCTS.map(product => (
+              {smartphones.map(product => (
                 <ProductCard 
                   key={product.id} 
                   product={product} 
