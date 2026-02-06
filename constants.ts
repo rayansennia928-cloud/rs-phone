@@ -17,16 +17,15 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'p2',
-    name: 'Galaxy Horizon S24',
+    name: 'Iphone 16 pro ',
     category: 'smartphone',
-    price: 850,
-    description: 'Performance et élégance. Parfait pour les professionnels et les créatifs.',
-    image: 'https://picsum.photos/400/500?random=2',
+    price: 160000,
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-model-unselect-gallery-2-202409_GEO_US?wid=5120&hei=2880&fmt=webp&qlt=90&.v=ZnlzVUZzRWd3dlg0RllqbHhQSUpKTGdzSmpObkZCM3MrNmJ5SkhESlNDZ1FydVY5cEpsVTdwMmk5U2U2UXBQVThLcXQxZ1h0QThIT2dnUm5qbGk5OUJkSERIUjY1Wk1Od3FtNjF6NFZLVXN3T2cyVW1PTmN1S2p2Q1BWWWpNTGkwTko2SW91TzhmREJLUUxPTmhpZ1NB&traceId=1',
     specs: {
-      screen: '6.2" AMOLED',
-      battery: '4000 mAh',
-      camera: '64MP Zoom x3',
-      processor: 'Snapdragon Gen 3',
+      couleur: 'vert ',
+      battery: '90%',
+      stockag: '512 GB',
+      Etat_du_telephone: '10/10',
     },
   },
   {
@@ -55,3 +54,26 @@ export const MOCK_PRODUCTS: Product[] = [
       compatibility: 'Bluetooth 5.3',
     },
   },
+{
+    id: 'a2',
+    name: 'Chargeur UltraFast 65W',
+    category: 'accessory',
+    price: 45,
+    description: 'Rechargez vos appareils en un temps record. Compatible USB-C.',
+    image: 'https://picsum.photos/400/500?random=5',
+    specs: {
+      compatibility: 'USB-C PD',
+    },
+  },
+  {
+    id: 'a3',
+    name: 'Coque de Protection Renforcée',
+    category: 'accessory',
+    price: 35,
+    description: 'Protection militaire contre les chutes jusqu\'à 3 mètres.',
+    image: 'https://picsum.photos/400/500?random=6',
+    specs: {
+      compatibility: 'Universel (s\'adapte)',
+    },
+  },
+];
