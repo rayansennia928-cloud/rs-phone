@@ -60,8 +60,16 @@ const App: React.FC = () => {
     // 1. Création de l'objet commande (local)
     const orderId = `CMD-${Math.floor(Math.random() * 1000000)}`;
     const totalAmount = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const orderDate = new Date().toLocaleDateString('fr-FR', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
     
     // 2. Préparation du contenu de l'email
+    // Ce contenu est formaté pour être lisible par le commerçant dans l'email
     const itemsListString = cartItems
       .map(item => `- ${item.quantity}x ${item.name} (${item.price * item.quantity} DA)`)
       .join('\n');
@@ -71,21 +79,24 @@ const App: React.FC = () => {
       customer_email: customerInfo.email,
       customer_phone: customerInfo.phone,
       customer_address: customerInfo.address,
+      customer_note: customerInfo.note || "Aucune note",
       order_details: itemsListString,
       total_price: totalAmount + ' DA',
       order_id: orderId,
+      order_date: orderDate,
       reply_to: customerInfo.email
     };
 
     try {
       // 3. Tentative d'envoi via EmailJS
-      const serviceId = 'service_gmail'; // Remplacez par votre vrai Service ID
-      const templateId = 'template_mijyktl'; // Remplacez par votre vrai Template ID
-      const publicKey = '1ARPiHI2LjgMsFMve'; // Remplacez par votre vraie Public Key
+      const serviceId = 'YOUR_SERVICE_ID'; // Remplacez par votre vrai Service ID
+      const templateId = 'YOUR_TEMPLATE_ID'; // Remplacez par votre vrai Template ID
+      const publicKey = 'YOUR_PUBLIC_KEY'; // Remplacez par votre vraie Public Key
 
       // Si les clés sont celles par défaut, on simule juste une attente pour ne pas créer d'erreur
-      if (serviceId === 'service_gmail') {
+      if (serviceId === 'YOUR_SERVICE_ID') {
         console.log("EmailJS non configuré : Simulation de l'envoi de commande...");
+        console.log("Données qui seraient envoyées :", templateParams);
         await new Promise(resolve => setTimeout(resolve, 1500)); // Simulation délai réseau
       } else {
         await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -99,14 +110,15 @@ const App: React.FC = () => {
     // 4. Succès : Mise à jour de l'état local et sauvegarde dans localStorage
     const newOrder: Order = {
       id: orderId,
-      date: new Date().toLocaleDateString('fr-FR'),
+      date: orderDate,
       items: [...cartItems],
       total: totalAmount,
       status: OrderStatus.PENDING,
       customerName: customerInfo.name,
       address: customerInfo.address,
       phone: customerInfo.phone,
-      email: customerInfo.email
+      email: customerInfo.email,
+      note: customerInfo.note
     };
 
     setOrders(prev => {
@@ -265,7 +277,7 @@ const App: React.FC = () => {
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Commande Confirmée !</h2>
             <p className="text-lg text-gray-600 mb-8 max-w-md">
-              Merci pour votre achat chez RS Phone. Un email contenant votre code de suivi a été envoyé à <strong>{lastOrder?.email}</strong>.
+              Merci pour votre achat chez RS Phone. Un email contenant votre code de suivi et le détail de la commande a été envoyé à <strong>{lastOrder?.email}</strong>.
             </p>
             <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-8 w-full max-w-sm">
               <p className="text-sm text-gray-500 mb-1">Votre numéro de suivi :</p>
