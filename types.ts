@@ -30,6 +30,7 @@ export interface CustomerInfo {
   phone: string;
   email: string;
   address: string;
+  note?: string;
 }
 
 export interface Order {
@@ -42,6 +43,7 @@ export interface Order {
   address: string;
   phone: string;
   email: string;
+  note?: string;
 }
 
 export type ViewState = 'home' | 'accessories' | 'tracking' | 'checkout-success' | 'about';
