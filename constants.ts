@@ -30,3 +30,18 @@ export const MOCK_PRODUCTS: Product[] = [
     },
   },
 ];
+  {
+    id: 'iphone-16-pro',
+    name: 'iPhone 16 Pro',
+    category: 'smartphone',
+    price: 140000,
+    description: 'Le premier iPhone en titane de qualité aérospatiale. Puce A17 Pro révolutionnaire, bouton Action personnalisable et un système photo pro plus polyvalent que jamais.',
+    image: 'https://www.apple.com/v/iphone-17/d/images/overview/highlights/ceramic-shield/highlights_ceramic_shield_endframe__b8x1kxkbto6a_large_2x.jpg',
+    inStock: true,
+    specs: {
+      screen: '6.1" Super Retina XDR',
+      battery: 'Jusqu\'à 23h',
+      camera: '48MP Pro',
+      processor: 'A17 Pro',
+    },
+  },
