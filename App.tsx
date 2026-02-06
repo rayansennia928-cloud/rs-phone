@@ -68,11 +68,13 @@ const App: React.FC = () => {
 
     const templateParams = {
       customer_name: customerInfo.name,
+      customer_email: customerInfo.email,
       customer_phone: customerInfo.phone,
       customer_address: customerInfo.address,
       order_details: itemsListString,
       total_price: totalAmount + ' DA',
-      order_id: orderId
+      order_id: orderId,
+      reply_to: customerInfo.email
     };
 
     try {
@@ -103,7 +105,8 @@ const App: React.FC = () => {
       status: OrderStatus.PENDING,
       customerName: customerInfo.name,
       address: customerInfo.address,
-      phone: customerInfo.phone
+      phone: customerInfo.phone,
+      email: customerInfo.email
     };
 
     setOrders(prev => {
@@ -237,11 +240,11 @@ const App: React.FC = () => {
                 <div className="bg-gray-50 rounded-xl p-6 space-y-3 text-gray-600">
                   <p className="flex items-center gap-3">
                     <span className="font-semibold text-gray-900 w-20">Email :</span>
-                    <a href="senniarayan8@gmai.com" className="text-blue-600 hover:underline">senniarayan8@gmai.com</a>
+                    <a href="mailto:contact@rsphone.dz" className="text-blue-600 hover:underline">contact@rsphone.dz</a>
                   </p>
                   <p className="flex items-center gap-3">
                     <span className="font-semibold text-gray-900 w-20">Tél :</span>
-                    <span>+213 540187667</span>
+                    <span>+213 555 123 456</span>
                   </p>
                   <p className="flex items-center gap-3">
                     <span className="font-semibold text-gray-900 w-20">Adresse :</span>
@@ -254,6 +257,7 @@ const App: React.FC = () => {
         );
 
       case 'checkout-success':
+        const lastOrder = orders.find(o => o.id === lastOrderId);
         return (
           <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 animate-fade-in">
             <div className="bg-green-100 p-4 rounded-full mb-6">
@@ -261,7 +265,7 @@ const App: React.FC = () => {
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Commande Confirmée !</h2>
             <p className="text-lg text-gray-600 mb-8 max-w-md">
-              Merci pour votre achat chez RS Phone. Votre commande a été enregistrée avec succès.
+              Merci pour votre achat chez RS Phone. Un email contenant votre code de suivi a été envoyé à <strong>{lastOrder?.email}</strong>.
             </p>
             <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-8 w-full max-w-sm">
               <p className="text-sm text-gray-500 mb-1">Votre numéro de suivi :</p>
