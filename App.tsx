@@ -6,7 +6,7 @@ import { OrderTracker } from './components/OrderTracker';
 import { ChatAssistant } from './components/ChatAssistant';
 import { MOCK_PRODUCTS } from './constants';
 import { Product, CartItem, ViewState, Order, OrderStatus, CustomerInfo } from './types';
-import { CheckCircle, Headphones, Smartphone } from 'lucide-react';
+import { CheckCircle, Headphones, Smartphone, Facebook, Instagram, Twitter, Info } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const App: React.FC = () => {
@@ -163,6 +163,63 @@ const App: React.FC = () => {
       
       case 'tracking':
         return <OrderTracker orders={orders} />;
+      
+      case 'about':
+        return (
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-fade-in">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-blue-100 rounded-lg">
+                  <Info className="h-8 w-8 text-blue-600" />
+                </div>
+                <h1 className="text-3xl font-bold text-gray-900">À propos de RS Phone</h1>
+              </div>
+              
+              <div className="prose prose-blue text-gray-600 mb-8">
+                <p className="mb-4">
+                  RS Phone est votre destination privilégiée pour les smartphones de dernière génération et les accessoires premium en Algérie.
+                </p>
+                <p>
+                  Nous nous engageons à fournir des produits authentiques, un service client exceptionnel et les meilleurs prix du marché. Notre mission est de vous connecter au monde avec style et fiabilité.
+                </p>
+              </div>
+
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Suivez-nous sur les réseaux</h2>
+              <div className="flex flex-wrap gap-4 mb-8">
+                <a href="#" className="flex items-center gap-2 px-5 py-3 bg-[#1877F2] text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                  <Facebook className="h-5 w-5" />
+                  <span>Facebook</span>
+                </a>
+                <a href="#" className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                  <Instagram className="h-5 w-5" />
+                  <span>Instagram</span>
+                </a>
+                <a href="#" className="flex items-center gap-2 px-5 py-3 bg-black text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                  <Twitter className="h-5 w-5" />
+                  <span>X (Twitter)</span>
+                </a>
+              </div>
+              
+              <div className="pt-8 border-t border-gray-100">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Contactez-nous</h2>
+                <div className="bg-gray-50 rounded-xl p-6 space-y-3 text-gray-600">
+                  <p className="flex items-center gap-3">
+                    <span className="font-semibold text-gray-900 w-20">Email :</span>
+                    <a href="mailto:contact@rsphone.dz" className="text-blue-600 hover:underline">contact@rsphone.dz</a>
+                  </p>
+                  <p className="flex items-center gap-3">
+                    <span className="font-semibold text-gray-900 w-20">Tél :</span>
+                    <span>+213 555 123 456</span>
+                  </p>
+                  <p className="flex items-center gap-3">
+                    <span className="font-semibold text-gray-900 w-20">Adresse :</span>
+                    <span>Alger, Algérie</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
 
       case 'checkout-success':
         return (
@@ -224,7 +281,7 @@ const App: React.FC = () => {
       
       <footer className="bg-white border-t border-gray-200 py-12 mt-12" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-          <p>&copy; 2026 RS Phone. Tous droits réservés.</p>
+          <p>&copy; 2024 RS Phone. Tous droits réservés.</p>
           <p className="mt-2">Ce site est une démonstration technique.</p>
         </div>
       </footer>
