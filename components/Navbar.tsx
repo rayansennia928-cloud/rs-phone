@@ -32,10 +32,11 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, currentVi
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => onChangeView('home')}
-              className={`text-sm font-medium transition-colors hover:text-blue-600 ${currentView === 'home' ? 'text-blue-600' : 'text-gray-600'}`}
+              className={`flex items-center text-sm font-medium transition-colors hover:text-blue-600 ${currentView === 'home' ? 'text-blue-600' : 'text-gray-600'}`}
               aria-current={currentView === 'home' ? 'page' : undefined}
             >
-              Boutique
+              <Smartphone className="h-4 w-4 mr-1" aria-hidden="true" />
+              Smartphones
             </button>
             <button 
               onClick={() => onChangeView('accessories')}
