@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, Package, Smartphone, Headphones } from 'lucide-react';
+import { ShoppingCart, Package, Headphones } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface NavbarProps {
@@ -24,7 +24,11 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, currentVi
             onKeyDown={(e) => e.key === 'Enter' && onChangeView('home')}
             aria-label="Retour à l'accueil RS Phone"
           >
-            <Smartphone className="h-8 w-8 text-blue-600" aria-hidden="true" />
+            <img 
+              src="/rs-logo.png" 
+              alt="RS Phone" 
+              className="h-12 w-auto object-contain"
+            />
             <span className="ml-2 text-xl font-bold text-gray-900">RS Phone</span>
           </div>
 
