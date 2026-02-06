@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '../types';
-import { Plus } from 'lucide-react';
+import { Plus, Ban, Check } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -8,17 +8,30 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
+  const isAvailable = product.inStock;
+
   return (
     <div className="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
       <div className="relative aspect-square overflow-hidden bg-gray-100">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          className={`w-full h-full object-cover object-center transition-transform duration-500 ${isAvailable ? 'group-hover:scale-105' : 'grayscale opacity-80'}`}
           loading="lazy"
         />
-        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 text-xs font-semibold rounded text-gray-800 uppercase tracking-wide">
-          {product.category === 'smartphone' ? 'Téléphone' : 'Accessoire'}
+        <div className="absolute top-3 left-3 flex flex-col gap-2 items-start">
+          <div className="bg-white/90 backdrop-blur px-2 py-1 text-xs font-semibold rounded text-gray-800 uppercase tracking-wide">
+            {product.category === 'smartphone' ? 'Téléphone' : 'Accessoire'}
+          </div>
+          {isAvailable ? (
+            <div className="bg-green-500/90 backdrop-blur px-2 py-1 text-xs font-semibold rounded text-white uppercase tracking-wide flex items-center gap-1">
+              <Check className="w-3 h-3" /> En stock
+            </div>
+          ) : (
+            <div className="bg-red-500/90 backdrop-blur px-2 py-1 text-xs font-semibold rounded text-white uppercase tracking-wide flex items-center gap-1">
+              <Ban className="w-3 h-3" /> Rupture
+            </div>
+          )}
         </div>
       </div>
       
@@ -40,11 +53,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
         )}
 
         <button 
-          onClick={() => onAddToCart(product)}
-          className="w-full flex items-center justify-center space-x-2 bg-slate-900 text-white py-2.5 rounded-lg hover:bg-slate-800 transition-colors active:scale-95 duration-150"
+          onClick={() => isAvailable && onAddToCart(product)}
+          disabled={!isAvailable}
+          className={`w-full flex items-center justify-center space-x-2 py-2.5 rounded-lg transition-colors active:scale-95 duration-150 ${
+            isAvailable 
+              ? 'bg-slate-900 text-white hover:bg-slate-800' 
+              : 'bg-gray-200 text-gray-500 cursor-not-allowed active:scale-100'
+          }`}
         >
-          <Plus className="h-4 w-4" />
-          <span>Ajouter au panier</span>
+          {isAvailable ? (
+            <>
+              <Plus className="h-4 w-4" />
+              <span>Ajouter au panier</span>
+            </>
+          ) : (
+            <span>Indisponible</span>
+          )}
         </button>
       </div>
     </div>
