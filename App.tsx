@@ -80,7 +80,7 @@ const App: React.FC = () => {
     try {
       // 3. Tentative d'envoi via EmailJS
       const serviceId = 'service_gmail'; // Remplacez par votre vrai Service ID
-      const templateId = 'template_mijktl'; // Remplacez par votre vrai Template ID
+      const templateId = 'template_mijyktl'; // Remplacez par votre vrai Template ID
       const publicKey = 'l-wIKsMXS0-qyw3tA'; // Remplacez par votre vraie Public Key
 
       // Si les clés sont celles par défaut, on simule juste une attente pour ne pas créer d'erreur
