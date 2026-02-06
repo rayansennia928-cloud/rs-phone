@@ -237,11 +237,11 @@ const App: React.FC = () => {
                 <div className="bg-gray-50 rounded-xl p-6 space-y-3 text-gray-600">
                   <p className="flex items-center gap-3">
                     <span className="font-semibold text-gray-900 w-20">Email :</span>
-                    <a href="mailto:contact@rsphone.dz" className="text-blue-600 hover:underline">contact@rsphone.dz</a>
+                    <a href="senniarayan8@gmai.com" className="text-blue-600 hover:underline">senniarayan8@gmai.com</a>
                   </p>
                   <p className="flex items-center gap-3">
                     <span className="font-semibold text-gray-900 w-20">Tél :</span>
-                    <span>+213 555 123 456</span>
+                    <span>+213 540187667</span>
                   </p>
                   <p className="flex items-center gap-3">
                     <span className="font-semibold text-gray-900 w-20">Adresse :</span>
