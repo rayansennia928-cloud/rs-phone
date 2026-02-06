@@ -13,7 +13,18 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [orders, setOrders] = useState<Order[]>([]);
+  
+  // Initialisation des commandes depuis le localStorage pour la persistance
+  const [orders, setOrders] = useState<Order[]>(() => {
+    try {
+      const savedOrders = localStorage.getItem('rs_phone_orders');
+      return savedOrders ? JSON.parse(savedOrders) : [];
+    } catch (e) {
+      console.error("Erreur chargement commandes:", e);
+      return [];
+    }
+  });
+
   const [lastOrderId, setLastOrderId] = useState<string | null>(null);
   const [isProcessingOrder, setIsProcessingOrder] = useState(false);
 
@@ -66,9 +77,9 @@ const App: React.FC = () => {
 
     try {
       // 3. Tentative d'envoi via EmailJS
-      const serviceId = 'service_gmail'; // Remplacez par votre vrai Service ID
-      const templateId = 'template_mijyktl'; // Remplacez par votre vrai Template ID
-      const publicKey = 'l-wIKsMXS0-qyw3tA'; // Remplacez par votre vraie Public Key
+      const serviceId = 'YOUR_SERVICE_ID'; // Remplacez par votre vrai Service ID
+      const templateId = 'YOUR_TEMPLATE_ID'; // Remplacez par votre vrai Template ID
+      const publicKey = 'YOUR_PUBLIC_KEY'; // Remplacez par votre vraie Public Key
 
       // Si les clés sont celles par défaut, on simule juste une attente pour ne pas créer d'erreur
       if (serviceId === 'YOUR_SERVICE_ID') {
@@ -83,7 +94,7 @@ const App: React.FC = () => {
       console.error('Erreur non bloquante lors de l\'envoi de l\'email:', error);
     }
 
-    // 4. Succès : Mise à jour de l'état local (Exécuté même si l'email échoue)
+    // 4. Succès : Mise à jour de l'état local et sauvegarde dans localStorage
     const newOrder: Order = {
       id: orderId,
       date: new Date().toLocaleDateString('fr-FR'),
@@ -95,7 +106,17 @@ const App: React.FC = () => {
       phone: customerInfo.phone
     };
 
-    setOrders(prev => [...prev, newOrder]);
+    setOrders(prev => {
+      const updatedOrders = [...prev, newOrder];
+      // Sauvegarde persistante
+      try {
+        localStorage.setItem('rs_phone_orders', JSON.stringify(updatedOrders));
+      } catch (e) {
+        console.error("Erreur sauvegarde commandes:", e);
+      }
+      return updatedOrders;
+    });
+
     setLastOrderId(newOrder.id);
     setCartItems([]);
     setIsCartOpen(false);
