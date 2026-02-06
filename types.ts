@@ -41,4 +41,4 @@ export interface Order {
   email?: string;
 }
 
-export type ViewState = 'home' | 'accessories' | 'tracking' | 'checkout-success';
+export type ViewState = 'home' | 'accessories' | 'tracking' | 'checkout-success' | 'about';
