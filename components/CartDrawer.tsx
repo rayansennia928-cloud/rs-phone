@@ -103,7 +103,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>{item.name}</h3>
-                              <p className="ml-4">{item.price * item.quantity} €</p>
+                              <p className="ml-4">{item.price * item.quantity} DA</p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500 capitalize">{item.category === 'smartphone' ? 'Téléphone' : 'Accessoire'}</p>
                           </div>
@@ -189,7 +189,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     <p className="text-sm text-gray-500 mb-2">Récapitulatif</p>
                     <div className="flex justify-between font-bold text-lg text-gray-900">
                       <span>Total à payer</span>
-                      <span>{total} €</span>
+                      <span>{total} DA</span>
                     </div>
                   </div>
                 </form>
@@ -203,7 +203,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   <>
                     <div className="flex justify-between text-base font-medium text-gray-900 mb-4">
                       <p>Total</p>
-                      <p>{total} €</p>
+                      <p>{total} DA</p>
                     </div>
                     <button
                       onClick={() => setStep('details')}
