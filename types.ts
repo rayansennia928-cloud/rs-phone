@@ -5,6 +5,7 @@ export interface Product {
   price: number;
   description: string;
   image: string;
+  inStock: boolean;
   specs: {
     screen?: string;
     battery?: string;
