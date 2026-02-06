@@ -25,6 +25,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const [formData, setFormData] = useState<CustomerInfo>({
     name: '',
     phone: '',
+    email: '',
     address: ''
   });
 
@@ -143,7 +144,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 // --- STEP 2: CUSTOMER FORM ---
                 <form id="checkout-form" onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
                   <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-800">
-                    Veuillez remplir ces informations pour valider la commande. Nous vous contacterons par téléphone si nécessaire.
+                    Veuillez remplir ces informations pour valider la commande.
                   </div>
                   
                   <div>
@@ -157,6 +158,20 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
                     />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Adresse Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-4 py-2 border"
+                      placeholder="jean.dupont@example.com"
+                      value={formData.email}
+                      onChange={e => setFormData({...formData, email: e.target.value})}
+                    />
+                    <p className="mt-1 text-xs text-gray-500">Le code de suivi de votre commande sera envoyé à cette adresse.</p>
                   </div>
 
                   <div>
