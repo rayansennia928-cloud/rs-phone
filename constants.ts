@@ -55,26 +55,3 @@ export const MOCK_PRODUCTS: Product[] = [
       compatibility: 'Bluetooth 5.3',
     },
   },
-  {
-    id: 'a2',
-    name: 'Chargeur UltraFast 65W',
-    category: 'accessory',
-    price: 45,
-    description: 'Rechargez vos appareils en un temps record. Compatible USB-C.',
-    image: 'https://picsum.photos/400/500?random=5',
-    specs: {
-      compatibility: 'USB-C PD',
-    },
-  },
-  {
-    id: 'a3',
-    name: 'Coque de Protection Renforcée',
-    category: 'accessory',
-    price: 35,
-    description: 'Protection militaire contre les chutes jusqu\'à 3 mètres.',
-    image: 'https://picsum.photos/400/500?random=6',
-    specs: {
-      compatibility: 'Universel (s\'adapte)',
-    },
-  },
-];
