@@ -25,7 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
       <div className="p-5">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-lg font-bold text-gray-900">{product.name}</h3>
-          <span className="text-lg font-bold text-blue-600">{product.price} €</span>
+          <span className="text-lg font-bold text-blue-600">{product.price} DA</span>
         </div>
         
         <p className="text-sm text-gray-500 line-clamp-2 mb-4">
