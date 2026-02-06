@@ -3,16 +3,16 @@ import { Product } from './types';
 export const MOCK_PRODUCTS: Product[] = [
   {
     id: 'p1',
-    name: 'Lumix Phone X15',
+    name: 'Iphone 15 pro',
     category: 'smartphone',
-    price: 999,
-    description: 'Le dernier né de la technologie mobile. Écran OLED vibrant et processeur ultra-rapide.',
-    image: 'https://picsum.photos/400/500?random=1',
+    price: 155000,
+    description: 'etat : 10/10 , batterie : 99% , stockage : 256 GB',
+    image: 'https://dz.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/72/6535/1.jpg?7197',
     specs: {
-      screen: '6.7" OLED 120Hz',
+      screen: 'Technologie ProMotion avec taux de rafraîchissement adaptatif atteignant 120 Hz',
       battery: '4500 mAh',
       camera: '50MP Principal',
-      processor: 'A15 Bionic-like',
+      faceid: 'active'
     },
   },
   {
