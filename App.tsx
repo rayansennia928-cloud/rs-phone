@@ -186,11 +186,21 @@ const App: React.FC = () => {
 
               <h2 className="text-xl font-bold text-gray-900 mb-4">Suivez-nous sur les réseaux</h2>
               <div className="flex flex-wrap gap-4 mb-8">
-                <a href="#" className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                <a 
+                  href="https://www.instagram.com/rs_phone26?igsh=aTlkbDh1NmFid243&utm_source=qr" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-lg hover:opacity-90 transition-opacity font-medium"
+                >
                   <Instagram className="h-5 w-5" />
                   <span>Instagram</span>
                 </a>
-                <a href="#" className="flex items-center gap-2 px-5 py-3 bg-black text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                <a 
+                  href="https://www.tiktok.com/@rs_phone2026" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-3 bg-black text-white rounded-lg hover:opacity-90 transition-opacity font-medium"
+                >
                   {/* Icône TikTok SVG personnalisée */}
                   <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 1 0 1 7.6 6.83 6.83 0 0 0 6-6.64V7.91a8.73 8.73 0 0 0 2.23 1.29v-2.51Z"/>
@@ -280,7 +290,7 @@ const App: React.FC = () => {
       
       <footer className="bg-white border-t border-gray-200 py-12 mt-12" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-          <p>&copy; 2026 RS Phone. Tous droits réservés.</p>
+          <p>&copy; 2024 RS Phone. Tous droits réservés.</p>
           <p className="mt-2">Ce site est une démonstration technique.</p>
         </div>
       </footer>
