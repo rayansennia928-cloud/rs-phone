@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, Package, Headphones, Smartphone } from 'lucide-react';
+import { ShoppingCart, Package, Headphones, Smartphone, Info } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface NavbarProps {
@@ -53,6 +53,14 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, currentVi
             >
               <Package className="h-4 w-4 mr-1" aria-hidden="true" />
               Suivi de commande
+            </button>
+            <button 
+              onClick={() => onChangeView('about')}
+              className={`flex items-center text-sm font-medium transition-colors hover:text-blue-600 ${currentView === 'about' ? 'text-blue-600' : 'text-gray-600'}`}
+              aria-current={currentView === 'about' ? 'page' : undefined}
+            >
+              <Info className="h-4 w-4 mr-1" aria-hidden="true" />
+              À propos
             </button>
           </div>
 
